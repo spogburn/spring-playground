@@ -44,8 +44,26 @@ public class DemoApplicationTests {
 	}
 
 	@Test
-	public void ObjTest() throws Exception {
+	public void objTest() throws Exception {
 		RequestBuilder request = MockMvcRequestBuilders.get("/shows?name=Veep&genre=Comedy");
+		this.mvc.perform(request).andExpect(status().isOk());
+	}
+
+	@Test
+	public void articleTest() throws Exception {
+		RequestBuilder request = MockMvcRequestBuilders.get("/articles/32/topic/politics");
+		this.mvc.perform(request).andExpect(status().isOk());
+	}
+
+	@Test
+	public void flowersTest() throws Exception {
+		RequestBuilder request = MockMvcRequestBuilders.get("/flowers/rose/red/12");
+		this.mvc.perform(request).andExpect(status().isOk());
+	}
+
+	@Test
+	public void candyTest() throws Exception {
+		RequestBuilder request = MockMvcRequestBuilders.get("/candy/gummiworms/assorted/2");
 		this.mvc.perform(request).andExpect(status().isOk());
 	}
 

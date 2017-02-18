@@ -16,6 +16,7 @@ public class DemoApplication {
     public String deleteData(){
         return "deleted!";
     }
+
 	@PutMapping("/put")
     public String updateData(){
 	    return "you just updated some data!";
@@ -37,5 +38,21 @@ public class DemoApplication {
     public String getShows(Shows shows){
         return String.format("show name is %s; show genre is %s", shows.getShowName(), shows.getShowGenre());
     }
+
+    @GetMapping("/articles/{articleId}/topic/{topic}")
+    public String getArticle(@PathVariable int articleId, @PathVariable String topic){
+        return String.format("articleId:%d articleTopic:%s", articleId, topic);
+    }
+
+    @GetMapping("/flowers/{variety}/{color}/{quantity}")
+    public String getFlowers(@PathVariable Map pathVariables){
+        return pathVariables.toString();
+    }
+
+    @GetMapping("/candy/{type}/{flavor}/{quantity}")
+    public String getCandies(Candy candy) {
+        return String.format("Candy type is %s; flavor is %s; quantity is %d", candy.getType(), candy.getFlavor(), candy.getQuantity());
+    }
+
 
 }
