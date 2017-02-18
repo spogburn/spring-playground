@@ -31,4 +31,22 @@ public class DemoApplicationTests {
 		this.mvc.perform(request).andExpect(status().isOk());
 	}
 
+	@Test
+	public void nameTest() throws Exception {
+		RequestBuilder request = MockMvcRequestBuilders.get("/cats?name=Cuddles&breed=Siamese");
+		this.mvc.perform(request).andExpect(status().isOk());
+	}
+
+	@Test
+	public void hashTest() throws Exception {
+		RequestBuilder request = MockMvcRequestBuilders.get("/dogs?name=Maggie&breed=Collie");
+		this.mvc.perform(request).andExpect(status().isOk());
+	}
+
+	@Test
+	public void ObjTest() throws Exception {
+		RequestBuilder request = MockMvcRequestBuilders.get("/shows?name=Veep&genre=Comedy");
+		this.mvc.perform(request).andExpect(status().isOk());
+	}
+
 }
