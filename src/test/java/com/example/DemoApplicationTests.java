@@ -9,6 +9,7 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.RequestBuilder;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @RunWith(SpringRunner.class)
@@ -40,7 +41,8 @@ public class DemoApplicationTests {
 	@Test
 	public void hashTest() throws Exception {
 		RequestBuilder request = MockMvcRequestBuilders.get("/dogs?name=Maggie&breed=Collie");
-		this.mvc.perform(request).andExpect(status().isOk());
+		this.mvc.perform(request).andExpect(status().isOk())
+		.andExpect(content().string("{name=Maggie, breed=Collie}"));
 	}
 
 	@Test
@@ -64,7 +66,8 @@ public class DemoApplicationTests {
 	@Test
 	public void candyTest() throws Exception {
 		RequestBuilder request = MockMvcRequestBuilders.get("/candy/gummiworms/assorted/2");
-		this.mvc.perform(request).andExpect(status().isOk());
+		this.mvc.perform(request).andExpect(status().isOk())
+		.andExpect(content().string("Candy type is gummiworms; flavor is assorted; quantity is 2"));
 	}
 
 }

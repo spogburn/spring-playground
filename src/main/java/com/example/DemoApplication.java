@@ -17,7 +17,7 @@ public class DemoApplication {
         return "deleted!";
     }
 
-	@PutMapping("/put")
+    @PutMapping("/put")
     public String updateData(){
 	    return "you just updated some data!";
     }
@@ -26,7 +26,7 @@ public class DemoApplication {
     public String getCats(
             @RequestParam String name, @RequestParam String breed)
     {
-        return String.format("Cat name is " + name + " and breed is " + breed);
+        return ("Cat name is " + name + " and breed is " + breed);
     }
 
     @GetMapping("/dogs")
