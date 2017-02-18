@@ -1,7 +1,9 @@
 package com.example;
 
+import com.sun.org.apache.xml.internal.utils.StringVector;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.*;
 
@@ -54,5 +56,19 @@ public class DemoApplication {
         return String.format("Candy type is %s; flavor is %s; quantity is %d", candy.getType(), candy.getFlavor(), candy.getQuantity());
     }
 
+    @PostMapping("/books")
+    public String getRawString(@RequestBody String rawBody){
+        return rawBody;
+    }
+
+    @PostMapping(value = "/cookies", consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
+    public String getMapParams(@RequestParam Map<String, String> cookieData){
+        return cookieData.toString();
+    }
+
+    @PostMapping(value = "/tomatoes", consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
+    public String getObjectParams(Tomatoes tomatoes){
+        return String.format("Variety is %s; Heirloom is %b", tomatoes.getVariety(), tomatoes.getHeirloom());
+    }
 
 }

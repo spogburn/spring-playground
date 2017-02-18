@@ -4,11 +4,16 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.http.MediaType;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.RequestBuilder;
+import org.springframework.test.web.servlet.request.MockHttpServletRequestBuilder;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
+import java.util.Random;
+
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -68,6 +73,45 @@ public class DemoApplicationTests {
 		RequestBuilder request = MockMvcRequestBuilders.get("/candy/gummiworms/assorted/2");
 		this.mvc.perform(request).andExpect(status().isOk())
 		.andExpect(content().string("Candy type is gummiworms; flavor is assorted; quantity is 2"));
+	}
+
+	@Test
+	public void booksTest() throws Exception {
+
+		MockHttpServletRequestBuilder request1 = post("/books")
+				.contentType(MediaType.APPLICATION_FORM_URLENCODED)
+				.param("title", "Harry Potter and the Prisoner of Azkaban")
+				.param("author", "J.K. Rowling");
+
+		this.mvc.perform(request1)
+				.andExpect(status().isOk())
+				.andExpect(content().string("title=Harry+Potter+and+the+Prisoner+of+Azkaban&author=J.K.+Rowling"));
+	}
+
+	@Test
+	public void cookiesMapTest() throws Exception {
+
+		MockHttpServletRequestBuilder request1 = post("/cookies")
+				.contentType(MediaType.APPLICATION_FORM_URLENCODED)
+				.param("type", "chocolate-chip")
+				.param("quantity", "3");
+
+		this.mvc.perform(request1)
+				.andExpect(status().isOk())
+				.andExpect(content().string("{type=chocolate-chip, quantity=3}"));
+	}
+
+	@Test
+	public void tomatoesObjTest() throws Exception {
+
+		MockHttpServletRequestBuilder request1 = post("/tomatoes")
+				.contentType(MediaType.APPLICATION_FORM_URLENCODED)
+				.param("variety", "Early Girl")
+				.param("isHeirloom", "false");
+
+		this.mvc.perform(request1)
+				.andExpect(status().isOk())
+				.andExpect(content().string("Variety is Early Girl; Heirloom is false"));
 	}
 
 }
