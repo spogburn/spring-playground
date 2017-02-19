@@ -19,6 +19,9 @@ public class JSONController {
         return person.getFirstName() + " " + person.getLastName();
     }
 
+    @PostMapping("/data")
+    public Reporters[] getLocalData(@RequestBody Reporters reporters) {return reporters.getReporters();}
+
     @PostMapping("/filter/person")
     public Reporters[] getNestedData(@RequestBody Reporters reporters){
         return reporters.getReporters();
