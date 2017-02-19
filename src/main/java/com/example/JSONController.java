@@ -15,15 +15,15 @@ import org.springframework.web.bind.annotation.RestController;
 public class JSONController {
 
     @PostMapping("/person")
-    public String getJSONData(@RequestBody Person person){
-        return person.getFirstName() + " " + person.getLastName();
+    public String getJSONData(@RequestBody Reporter reporter){
+        return reporter.getFirstName() + " " + reporter.getLastName();
     }
 
     @PostMapping("/data")
-    public Reporters[] getLocalData(@RequestBody Reporters reporters) {return reporters.getReporters();}
+    public String getLocalData(@RequestBody Reporters reporters) {return reporters.getReporters()[0].getFirstName() + " " + reporters.getReporters()[0].getLastName();}
 
     @PostMapping("/filter/person")
-    public Reporters[] getNestedData(@RequestBody Reporters reporters){
+    public Reporter[] getNestedData(@RequestBody Reporters reporters){
         return reporters.getReporters();
     }
 

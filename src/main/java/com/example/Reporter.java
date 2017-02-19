@@ -5,7 +5,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * Created by stephaniepaigeogburn on 2/18/17.
  */
-public class Person {
+public class Reporter {
     private String firstName;
     private String lastName;
 

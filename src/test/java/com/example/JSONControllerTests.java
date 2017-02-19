@@ -78,7 +78,7 @@ public class JSONControllerTests {
 
         this.mvc.perform(request)
                 .andExpect(status().isOk())
-                .andExpect(content().string(json));
+                .andExpect(content().string("Nina Totenburg"));
     }
 
     private String getJSON(String path) throws Exception {

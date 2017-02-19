@@ -5,14 +5,14 @@ package com.example;
  */
 public class Reporters {
     private String title;
-    private Reporters[] reporters;
+    private Reporter[] reporters;
 
     public String getTitle() { return title; }
 
     public void setTitle(String title) { this.title = title; }
 
-    public Reporters[] getReporters() {return reporters;}
+    public Reporter[] getReporters() {return reporters;}
 
-    public void setReporters(Reporters[] reporters) {this.reporters = reporters;}
+    public void setReporters(Reporter[] reporters) {this.reporters = reporters;}
 
 }
