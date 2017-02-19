@@ -1,0 +1,13 @@
+{
+  "title": "NPR Reporters",
+  "reporters": [
+    {
+      "first_name": "Nina",
+      "last_name": "Totenburg"
+    },
+    {
+      "first_name": "Tamara",
+      "last_name": "Keith"
+    }
+  ]
+}
