@@ -9,12 +9,17 @@ public class Reporter {
     private String firstName;
     private String lastName;
 
+    public Reporter(String firstName, String lastName){
+        this.firstName = firstName;
+        this.lastName = lastName;
+    }
+
     @JsonProperty("first_name")
     public String getFirstName(){
         return firstName;
     }
 
-    public void setFirstName(){
+    public void setFirstName(String firstName){
         this.firstName = firstName;
     }
 
@@ -23,7 +28,7 @@ public class Reporter {
         return lastName;
     }
 
-    public void setLastName(){
+    public void setLastName(String lastName){
         this.lastName = lastName;
     }
 

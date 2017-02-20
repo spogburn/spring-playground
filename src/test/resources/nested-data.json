@@ -1,0 +1,10 @@
+{
+  "name": "All Things Considered",
+  "hosts": [
+    {
+      "id": 1,
+       "name": "Kelly McEvers"
+    },
+    {"id": 2,
+    "name": "Ari Shapiro"}
+  ];
